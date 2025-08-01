@@ -1,0 +1,104 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "CanLearnML"
+version = "0.1.0"
+description = "Machine Learning tutorials and examples"
+requires-python = ">=3.13"
+license = {text = "MIT"}
+authors = [
+    {name = "CanLearnML Team", email = "info@canlearnml.com"},
+]
+
+dependencies = [
+    "numpy",
+    "pandas",
+    "matplotlib",
+    "seaborn",
+    "scipy",
+    "torch",
+    "jupyter",
+    "ipykernel",
+    "pandas-stubs==2.3.0.250703",
+    "scipy-stubs==1.16.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.3.0",
+    "mypy>=1.8.0",
+    "pytest>=8.0.0",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py313"
+exclude = [
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".tox",
+    ".venv",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # isort
+    "UP",  # pyupgrade
+    "N",   # pep8-naming
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "SIM", # flake8-simplify
+    "TCH", # flake8-type-checking
+    "TID", # flake8-tidy-imports
+    "RUF", # Ruff-specific rules
+]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+skip-magic-trailing-comma = false
+
+[tool.ruff.lint.isort]
+known-first-party = ["canlearnml"]
+section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]
+
+[tool.mypy]
+python_version = "3.13"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+strict_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+
+[[tool.mypy.overrides]]
+module = [
+    "numpy.*",
+    "pandas.*",
+    "matplotlib.*",
+    "seaborn.*",
+    "scipy.*",
+    "torch.*",
+]
+ignore_missing_imports = true
+
+[tool.uv]
+required-version = ">=0.1.0"
+python-preference = "managed"

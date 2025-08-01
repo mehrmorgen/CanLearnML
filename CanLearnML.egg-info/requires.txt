@@ -1,0 +1,15 @@
+numpy
+pandas
+matplotlib
+seaborn
+scipy
+torch
+jupyter
+ipykernel
+pandas-stubs==2.3.0.250703
+scipy-stubs==1.16.1.0
+
+[dev]
+ruff>=0.3.0
+mypy>=1.8.0
+pytest>=8.0.0
